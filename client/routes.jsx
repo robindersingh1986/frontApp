@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 import React from "react";
 import { Route } from "react-router-dom";
-import Login from './components/login';
+import Login from './containers/login';
 import Dashboard from "./components/dashboard";
 
 const Routes = ({ className, path }) => (

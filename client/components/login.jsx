@@ -1,26 +1,30 @@
 import React, { Component } from "react";
-import * as PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import _ from "lodash";
 import { withFormik, Form, Field } from "formik";
 const Yup = require("yup");
 import { Redirect } from "react-router-dom";
 
-
-const Login = ({ values, errors, touched }) => (
-  <Form>
-    <h2>Login</h2>
+const Login = ({values, errors, touched, dummy, inc, dec}) => (
     <div>
-      <div> Email </div>
-      <Field type="text" name="email" placeholder="email" />
-      {errors.email && <div className="inputFeedback"> {errors.email} </div>}
+        <Form>
+            <h2>Login</h2>
+            <div>
+            <div> Email </div>
+            <Field type="text" name="email" placeholder="email" />
+            {errors.email && <div className="inputFeedback"> {errors.email} </div>}
+            </div>
+            <div>
+            <div> Password </div>
+            <Field type="password" name="password" placeholder="Last Name" />
+                    {errors.password && <div className="inputFeedback"> {errors.password} </div>}
+            </div>
+            <button> Login </button>
+        </Form>
+         <span> d : { dummy } </span>
+        <button onClick={ inc }> Increment </button>
+        <button onClick={  dec }> Decrement </button>
     </div>
-    <div>
-      <div> Password </div>
-      <Field type="password" name="password" placeholder="Last Name" />
-            {errors.password && <div className="inputFeedback"> {errors.password} </div>}
-    </div>
-    <button> Login </button>
-  </Form>
 );
 
 export default withFormik({
@@ -70,6 +74,11 @@ export default withFormik({
     }
 })(Login);
 
-Login.propTypes = {
-  history: PropTypes.object
+
+Login.PropTypes = {
+    inc: PropTypes.func,
+    dec: PropTypes.func,
+    dummy: PropTypes.string,
+    history: PropTypes.object
 };
+
